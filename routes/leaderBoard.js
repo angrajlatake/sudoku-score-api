@@ -3,7 +3,7 @@ const router = express.Router();
 const fs = require("fs");
 //gets top 5 player names and scores
 router.get("/", (req, res) => {
-    fs.readFile("./data/leaderBoard.json", "utf8", (err, data) => {
+    fs.readFile("./data/leaderboard.json", "utf8", (err, data) => {
         data = data.trim();
         const leaderBoard = JSON.parse(data);
         console.log(data)
@@ -17,7 +17,7 @@ router.get("/", (req, res) => {
 })
 //post new player name and score
 router.post("/", (req, res) => {
-    fs.readFile("./data/leaderBoard.json", "utf8", (err, data) => {
+    fs.readFile("./data/leaderboard.json", "utf8", (err, data) => {
         data = data.trim();
         const leaderBoard = JSON.parse(data);
         const newPlayer = {
@@ -29,7 +29,7 @@ router.post("/", (req, res) => {
             return (new Date (new Date().toDateString() + ' ' + a.time))  - (new Date (new Date().toDateString() + ' ' + b.time));
         })
         const topFive = leaderBoard.slice(0, 5);
-        fs.writeFile("./data/leaderBoard.json", JSON.stringify(leaderBoard), (err) => {
+        fs.writeFile("./data/leaderboard.json", JSON.stringify(leaderBoard), (err) => {
             if (err){
                 res.status(400).send("Error writing to file");
             } else {
