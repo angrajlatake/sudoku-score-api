@@ -4,6 +4,7 @@ const fs = require("fs");
 //gets top 5 player names and scores
 router.get("/", (req, res) => {
     fs.readFile("./data/leaderBoard.json", "utf8", (err, data) => {
+        data = data.trim();
         const leaderBoard = JSON.parse(data);
         console.log(data)
         const topFive = leaderBoard.slice(0, 5);
@@ -17,6 +18,7 @@ router.get("/", (req, res) => {
 //post new player name and score
 router.post("/", (req, res) => {
     fs.readFile("./data/leaderBoard.json", "utf8", (err, data) => {
+        data = data.trim();
         const leaderBoard = JSON.parse(data);
         const newPlayer = {
             name: req.body.name,
