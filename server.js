@@ -17,5 +17,5 @@ app.use("/warehouses", sudoku);
 app.use("/leaderboard", leaderBoard);
 
 app.listen(PORT, () => {
-    console.log('Server Started on http://localhost:8080');
+    console.log(`Server Started on ${process.env.PORT}`);
 });
