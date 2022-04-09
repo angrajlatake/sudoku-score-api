@@ -2,7 +2,7 @@ require('dotenv').config(); //load .env variables
 const express = require('express'); 
 const app = express();
 const cors = require('cors');
-const PORT = process.env.PORT;
+const PORT = process.env.PORT || 8080;
 const sudoku = require("./routes/sudoku");
 const leaderBoard = require("./routes/leaderBoard");
 
@@ -13,7 +13,7 @@ app.use((req, res, next) => {
     next();
   })
 
-app.use("/warehouses", sudoku);
+
 app.use("/leaderboard", leaderBoard);
 
 app.listen(PORT, () => {

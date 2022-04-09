@@ -5,6 +5,7 @@ const fs = require("fs");
 router.get("/", (req, res) => {
     fs.readFile("./data/leaderBoard.json", "utf8", (err, data) => {
         const leaderBoard = JSON.parse(data);
+        console.log(data)
         const topFive = leaderBoard.slice(0, 5);
         if (err){
             res.status(400).send("Error reading file");
